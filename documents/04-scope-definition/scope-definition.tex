@@ -1,0 +1,101 @@
+% scope-definition.tex
+% Document 4 - Scope Definition Worksheet
+%
+% Build (from this folder):
+%   pdflatex -interaction=nonstopmode scope-definition.tex
+%
+% Developed by the center lead after the Pre-Project Intake and Discovery
+% Form (Document 1) and any needed discovery addenda. This worksheet is the
+% main input to an estimate and eventual Statement of Work (SOW). See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Scope Definition Worksheet}{ENG-FORM-04}{v0.1-draft}
+\SetFieldPrefix{scopedef}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY -- CONTENTS CONFIDENTIAL}
+
+\begin{document}
+
+\TitleBlock
+
+\DocumentControlBlock
+
+\IntakeSection{Linked Intake Record}
+\Guidance{Carry the Intake Reference Number forward unchanged from the
+Pre-Project Intake and Discovery Form for this request.}\\[4pt]
+\TextLine{LinkIntakeRef}{Intake Reference No. (from Document 1)}{8cm}
+
+\RequestingOrgBlock
+
+\IntakeSection{Work Packages and Deliverables}
+\Guidance{List each distinct piece of work as its own row. Keep deliverable
+formats specific (e.g. "PDF report," "CAD model," "calculation package").}\\[4pt]
+\begin{tabular}{@{}p{5.5cm}p{5.5cm}p{5.5cm}@{}}
+  \toprule
+  \textbf{Work Package} & \textbf{Deliverable(s)} & \textbf{Acceptance Owner} \\
+  \midrule
+  \TextLine{WP1Name}{}{5.1cm} & \TextLine{WP1Deliv}{}{5.1cm} & \TextLine{WP1Owner}{}{5.1cm} \\[10pt]
+  \TextLine{WP2Name}{}{5.1cm} & \TextLine{WP2Deliv}{}{5.1cm} & \TextLine{WP2Owner}{}{5.1cm} \\[10pt]
+  \TextLine{WP3Name}{}{5.1cm} & \TextLine{WP3Deliv}{}{5.1cm} & \TextLine{WP3Owner}{}{5.1cm} \\[10pt]
+  \TextLine{WP4Name}{}{5.1cm} & \TextLine{WP4Deliv}{}{5.1cm} & \TextLine{WP4Owner}{}{5.1cm} \\[10pt]
+  \TextLine{WP5Name}{}{5.1cm} & \TextLine{WP5Deliv}{}{5.1cm} & \TextLine{WP5Owner}{}{5.1cm} \\
+  \bottomrule
+\end{tabular}\\[4pt]
+\ContinuationNote
+
+\IntakeSection{Inclusions and Exclusions}
+\TextArea{ScopeIncluded}{Work explicitly included}{16.5cm}{2cm}\\[8pt]
+\TextArea{ScopeExcluded}{Work explicitly excluded}{16.5cm}{2cm}\\[8pt]
+\Guidance{Exclusions matter as much as inclusions -- an unstated exclusion is
+a common source of later scope disputes.}
+
+\IntakeSection{Interface Boundaries and Responsibilities}
+\TextArea{IfaceBoundaries}{Boundaries between this work and other teams / systems}{16.5cm}{2cm}\\[8pt]
+\begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+  \TextLine{RespCenter}{Center is responsible for}{8cm} &
+  \TextLine{RespRequester}{Requester is responsible for}{8cm} \\
+\end{tabular}
+
+\IntakeSection{Requester-Provided Inputs and Dependencies}
+\Guidance{List what the center needs from the requester before or during the
+work, and by when. Unmet dependencies are a common cause of schedule
+slippage.}\\[4pt]
+\begin{tabular}{@{}p{6cm}p{5.5cm}p{4.5cm}@{}}
+  \toprule
+  \textbf{Needed Input / Dependency} & \textbf{Provided By} & \textbf{Needed By} \\
+  \midrule
+  \TextLine{Dep1Item}{}{5.6cm} & \TextLine{Dep1Owner}{}{5.1cm} & \TextLine{Dep1Date}{}{4.1cm} \\[10pt]
+  \TextLine{Dep2Item}{}{5.6cm} & \TextLine{Dep2Owner}{}{5.1cm} & \TextLine{Dep2Date}{}{4.1cm} \\[10pt]
+  \TextLine{Dep3Item}{}{5.6cm} & \TextLine{Dep3Owner}{}{5.1cm} & \TextLine{Dep3Date}{}{4.1cm} \\
+  \bottomrule
+\end{tabular}\\[4pt]
+\ContinuationNote
+
+\IntakeSection{Assumptions and Open Items}
+\Guidance{Carried forward and updated from the Intake Form, plus anything
+new identified while defining scope. An item remains open until it has a
+recorded resolution.}\\[4pt]
+\OpenItemsTable{ScopeOpen}
+
+\IntakeSection{Scope-Change Handling}
+\Guidance{Before this record reaches Confirmed status, any new request is a
+proposed change to this worksheet, not an automatic scope addition. After
+Confirmed status / SOW authorization, use the organization's formal
+change-control process instead of this worksheet.}\\[4pt]
+\TextArea{ChangeNotes}{Notes on scope changes since the prior revision, if any}{16.5cm}{1.5cm}
+
+\AcknowledgementBlock{This worksheet reflects the scope boundaries agreed
+during discovery and review. Moving this record to Confirmed status
+indicates it is ready to support an estimate and Statement of Work (SOW),
+but is not itself authorization to begin engineering work or to charge
+project time.}
+
+\end{document}

@@ -1,0 +1,186 @@
+% form-components.sty
+% Reusable interactive PDF field macros and shared content blocks
+% (document control, revision history, acknowledgement) for the
+% engineering project intake document family.
+%
+% Depends on hyperref (loaded by intake-style.sty), which must be
+% loaded before this package.
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{form-components}[2026/10/09 v0.1 Engineering intake form components]
+
+\RequirePackage{hyperref}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{longtable}
+\RequirePackage{etoolbox}% provides \ifstrempty, used to skip empty field labels
+
+% ---------------------------------------------------------------------------
+% Field-name prefix. Set once per document (e.g. \SetFieldPrefix{intake}) so
+% that combining several documents into one PDF package does not collide
+% field names between documents.
+% ---------------------------------------------------------------------------
+\newcommand{\FormFieldPrefix}{doc}
+\newcommand{\SetFieldPrefix}[1]{\renewcommand{\FormFieldPrefix}{#1}}
+
+\newcommand{\FieldBorderColor}{0.45 0.45 0.45}
+\newcommand{\FieldBackColor}{1 1 1}
+
+% ---------------------------------------------------------------------------
+% \TextLine{name}{label}{width}
+% One-line fillable text field, label placed above the box (omitted if the
+% label is empty), the whole thing wrapped in a parbox of the given width
+% so it never overflows a surrounding table cell.
+% ---------------------------------------------------------------------------
+\newcommand{\TextLine}[3]{%
+  \parbox[t]{#3}{%
+    \ifstrempty{#2}{}{\small #2:\\[2pt]}%
+    \TextField[name=\FormFieldPrefix#1, width=#3, height=0.42cm,
+         bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{}%
+  }%
+}
+
+% ---------------------------------------------------------------------------
+% \TextArea{name}{label}{width}{height}
+% Multi-line fillable text field, label placed above the box (omitted if the
+% label is empty), wrapped in a parbox of the given width.
+% ---------------------------------------------------------------------------
+\newcommand{\TextArea}[4]{%
+  \parbox[t]{#3}{%
+    \ifstrempty{#2}{}{\small #2:\\[2pt]}%
+    \TextField[name=\FormFieldPrefix#1, width=#3, height=#4, multiline=true,
+         bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{}%
+  }%
+}
+
+% ---------------------------------------------------------------------------
+% \CheckOption{name}{label}
+% Checkbox with trailing label, for use in a list of options.
+% ---------------------------------------------------------------------------
+\newcommand{\CheckOption}[2]{%
+  \CheckBox[name=\FormFieldPrefix#1, width=10pt, height=10pt,
+       bordercolor={\FieldBorderColor}]{}~#2%
+}
+
+% ---------------------------------------------------------------------------
+% \DropDown{name}{label}{width}{comma,separated,choices}
+% Combo-box selection field, wrapped in a sized parbox like \TextLine.
+% ---------------------------------------------------------------------------
+\newcommand{\DropDown}[4]{%
+  \parbox[t]{#3}{%
+    \ifstrempty{#2}{}{\small #2:\\[2pt]}%
+    \ChoiceMenu[name=\FormFieldPrefix#1, combo, width=#3,
+         bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{}{#4}%
+  }%
+}
+
+% ---------------------------------------------------------------------------
+% Document control block: shared, recurring identically across every
+% document in the family (per design decision B1/B8).
+% Call once near the top of each document, after \TitleBlock.
+% ---------------------------------------------------------------------------
+\newcommand{\DocumentControlBlock}{%
+  \IntakeSection{Document Control}
+  \Guidance{Complete this block when the form is issued and update it each
+  time the record is revised. The Intake Reference Number is independent of
+  any project charge code and stays the same across every later document for
+  this request.}\\[4pt]
+  \begin{tabular}{@{}p{4.4cm}p{4.4cm}p{4.4cm}@{}}
+    \TextLine{CtrlIntakeRef}{Intake Reference No.}{3.9cm} &
+    \DropDown{CtrlStatus}{Status}{3.9cm}{Draft,Under Review,Confirmed} &
+    \TextLine{CtrlTemplateVer}{Template Version}{3.9cm} \\[10pt]
+    \TextLine{CtrlRevision}{Current Revision}{3.9cm} &
+    \TextLine{CtrlRevDate}{Revision Date}{3.9cm} &
+    \TextLine{CtrlPreparer}{Prepared By}{3.9cm} \\
+  \end{tabular}
+  \vspace{6pt}
+
+  \Guidance{Revision history -- add a row each time the record changes after
+  initial completion.}\\[4pt]
+  \begin{tabular}{@{}p{2cm}p{3.5cm}p{2.5cm}p{6cm}@{}}
+    \toprule
+    \textbf{Rev.} & \textbf{Author} & \textbf{Date} & \textbf{Change Summary} \\
+    \midrule
+    \TextLine{RevHistRev1}{}{1.6cm} &
+      \TextLine{RevHistAuth1}{}{3.1cm} &
+      \TextLine{RevHistDate1}{}{2.1cm} &
+      \TextField[name=\FormFieldPrefix RevHistSumm1, width=5.8cm, height=0.42cm,
+        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\[8pt]
+    \TextLine{RevHistRev2}{}{1.6cm} &
+      \TextLine{RevHistAuth2}{}{3.1cm} &
+      \TextLine{RevHistDate2}{}{2.1cm} &
+      \TextField[name=\FormFieldPrefix RevHistSumm2, width=5.8cm, height=0.42cm,
+        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\[8pt]
+    \TextLine{RevHistRev3}{}{1.6cm} &
+      \TextLine{RevHistAuth3}{}{3.1cm} &
+      \TextLine{RevHistDate3}{}{2.1cm} &
+      \TextField[name=\FormFieldPrefix RevHistSumm3, width=5.8cm, height=0.42cm,
+        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\
+    \bottomrule
+  \end{tabular}
+  \vspace{4pt}
+  \ContinuationNote
+}
+
+% ---------------------------------------------------------------------------
+% Requesting organization and contacts block: shared, recurring identically
+% across documents (per design decision B2).
+% ---------------------------------------------------------------------------
+\newcommand{\RequestingOrgBlock}{%
+  \IntakeSection{Requesting Organization and Contacts}
+  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+    \TextLine{OrgDept}{Requesting Department / Program}{8cm} & \\[10pt]
+    \TextLine{OrgSponsor}{Sponsor}{8cm} &
+    \TextLine{OrgSponsorContact}{Sponsor Email / Phone}{8cm} \\[10pt]
+    \TextLine{OrgTechLead}{Technical Contact}{8cm} &
+    \TextLine{OrgTechContact}{Technical Contact Email / Phone}{8cm} \\
+  \end{tabular}
+  \vspace{4pt}
+  \Guidance{List any additional people who can decide requirements or approve
+  scope changes.}\\[2pt]
+  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+    \TextLine{OrgOther1Name}{Additional Contact}{8cm} &
+    \TextLine{OrgOther1Role}{Role}{8cm} \\[10pt]
+    \TextLine{OrgOther2Name}{Additional Contact}{8cm} &
+    \TextLine{OrgOther2Role}{Role}{8cm} \\
+  \end{tabular}
+  \vspace{4pt}
+  \ContinuationNote
+}
+
+% ---------------------------------------------------------------------------
+% Acknowledgement block: shared visual style; wording text is passed in so
+% each document can use acknowledgement language appropriate to its stage.
+% ---------------------------------------------------------------------------
+\newcommand{\AcknowledgementBlock}[1]{%
+  \IntakeSection{Acknowledgement}
+  \Guidance{#1}\\[8pt]
+  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+    \TextLine{AckReqName}{Requester Name}{8cm} &
+    \TextLine{AckReqDate}{Date}{8cm} \\[10pt]
+    \TextLine{AckCenterName}{Center Reviewer Name}{8cm} &
+    \TextLine{AckCenterDate}{Date}{8cm} \\
+  \end{tabular}
+}
+
+% ---------------------------------------------------------------------------
+% \OpenItemsTable{prefix}
+% Three-row open-item / owner / target-date table, reused identically across
+% documents (first used on the Intake Form, reused on the Scope Definition
+% Worksheet). The prefix argument keeps field names unique when a document
+% needs more than one open-items table (e.g. "Open" vs "ScopeOpen").
+% ---------------------------------------------------------------------------
+\newcommand{\OpenItemsTable}[1]{%
+  \begin{tabular}{@{}p{7cm}p{5cm}p{4cm}@{}}
+    \toprule
+    \textbf{Open Item} & \textbf{Owner} & \textbf{Target Date} \\
+    \midrule
+    \TextLine{#1Item1}{}{6.6cm} & \TextLine{#1Owner1}{}{4.6cm} & \TextLine{#1Date1}{}{3.6cm} \\[8pt]
+    \TextLine{#1Item2}{}{6.6cm} & \TextLine{#1Owner2}{}{4.6cm} & \TextLine{#1Date2}{}{3.6cm} \\[8pt]
+    \TextLine{#1Item3}{}{6.6cm} & \TextLine{#1Owner3}{}{4.6cm} & \TextLine{#1Date3}{}{3.6cm} \\
+    \bottomrule
+  \end{tabular}\\[4pt]
+  \ContinuationNote
+}
+
+\endinput

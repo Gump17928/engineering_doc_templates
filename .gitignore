@@ -1,0 +1,23 @@
+# LaTeX build artifacts (safe to delete/regenerate at any time)
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.nav
+*.snm
+*.vrb
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
+# Local scratch build output directory
+/build/
+
+# OS / editor clutter
+.DS_Store
+Thumbs.db

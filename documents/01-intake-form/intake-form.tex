@@ -1,0 +1,100 @@
+% intake-form.tex
+% Document 1 - Pre-Project Intake and Discovery Form
+%
+% Build (from this folder):
+%   pdflatex -interaction=nonstopmode intake-form.tex
+%
+% This is the first document a requester completes, before any charge code
+% or project commitment exists. See docs/Engineering_Project_Intake_Plan.md
+% for the full workflow this document fits into.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Pre-Project Intake and Discovery Form}{ENG-FORM-01}{v0.1-draft}
+\SetFieldPrefix{intake}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY -- CONTENTS CONFIDENTIAL}
+
+\begin{document}
+
+\TitleBlock
+
+\DocumentControlBlock
+
+\RequestingOrgBlock
+
+\IntakeSection{Problem and Intended Outcome}
+\Guidance{Describe the situation in your own words. It is fine to be
+informal here -- the center will help translate this into engineering
+terms during discussion.}\\[4pt]
+\TextArea{ProbCurrent}{Current condition / problem}{16.5cm}{2cm}\\[8pt]
+\TextArea{ProbWhyNow}{Why assistance is needed now}{16.5cm}{1.5cm}\\[8pt]
+\TextArea{ProbOutcome}{Desired outcome}{16.5cm}{1.5cm}\\[8pt]
+\TextArea{ProbConsequence}{Consequence if nothing is done}{16.5cm}{1.5cm}
+
+\IntakeSection{Requested Engineering Assistance}
+\Guidance{Select every discipline that may apply. It is fine to select
+more than one, or to select Unsure if you are not certain which discipline
+is needed.}\\[6pt]
+\CheckOption{DiscMech}{Mechanical} \quad
+\CheckOption{DiscElec}{Electrical} \quad
+\CheckOption{DiscStruct}{Structural} \quad
+\CheckOption{DiscSystems}{Systems} \quad
+\CheckOption{DiscEnviron}{Environmental} \quad
+\CheckOption{DiscUnsure}{Unsure -- please advise}\\[8pt]
+\TextArea{ReqActivities}{Requested activities (e.g. design, analysis, assessment, troubleshooting)}{16.5cm}{2cm}\\[8pt]
+\TextArea{ReqInterfaces}{Other teams or systems this work interfaces with}{16.5cm}{1.5cm}
+
+\IntakeSection{Preliminary Scope Boundaries}
+\Guidance{These are proposed boundaries for discussion, not an approved
+Statement of Work. List what you believe is included and excluded.}\\[4pt]
+\TextArea{ScopeIncluded}{Work believed to be included}{16.5cm}{2cm}\\[8pt]
+\TextArea{ScopeExcluded}{Work believed to be excluded}{16.5cm}{1.5cm}\\[8pt]
+\TextArea{ScopeAssets}{Assets, sites, or systems involved}{16.5cm}{1.5cm}
+
+\IntakeSection{Outputs and Success Criteria}
+\TextArea{OutDeliverables}{Expected deliverables and formats}{16.5cm}{1.5cm}\\[8pt]
+\TextLine{OutAcceptOwner}{Who will review / accept the results}{10cm}\\[8pt]
+\TextArea{OutSuccess}{How success could be measured}{16.5cm}{1.5cm}
+
+\IntakeSection{Timing and Resources}
+\begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+  \TextLine{TimeDesiredDate}{Desired completion date}{8cm} &
+  \TextLine{TimeHardDeadline}{Hard deadline (if any)}{8cm} \\[10pt]
+\end{tabular}
+\TextArea{TimeDeadlineReason}{Reason for the hard deadline, if applicable}{16.5cm}{1.2cm}\\[8pt]
+\begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+  \TextLine{TimeAccessWindow}{Site access / outage windows}{8cm} &
+  \TextLine{TimeChargeCode}{Charge code (if already known)}{8cm} \\
+\end{tabular}\\[4pt]
+\Guidance{A charge code is not required to submit this form.}
+
+\IntakeSection{Inputs and Constraints}
+\TextArea{InAvailData}{Available drawings, data, or prior studies}{16.5cm}{1.5cm}\\[8pt]
+\begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
+  \TextLine{InAttachRef1}{Attachment reference 1}{8cm} &
+  \TextLine{InAttachRef2}{Attachment reference 2}{8cm} \\[10pt]
+\end{tabular}
+\TextArea{InStandards}{Known applicable standards, codes, or safety / environmental constraints}{16.5cm}{1.5cm}\\[8pt]
+\TextArea{InHandling}{Known information-handling requirements for this request}{16.5cm}{1.2cm}
+
+\IntakeSection{Assumptions and Open Questions}
+\Guidance{List anything unknown or undecided. Mark items Unknown or Not
+applicable rather than guessing; each item should have a follow-up owner.}\\[4pt]
+\OpenItemsTable{Open}
+
+\IntakeSection{Discussion and Acknowledgement}
+\TextArea{DiscNotes}{Center reviewer notes from discussion (boundaries clarified, next action)}{16.5cm}{2cm}\\[8pt]
+
+\AcknowledgementBlock{This form reflects current understanding only. It
+does not commit \CompanyName's resources, and the proposed scope may
+change following further review. Completing this form is not authorization
+to begin engineering work or to charge project time.}
+
+\end{document}

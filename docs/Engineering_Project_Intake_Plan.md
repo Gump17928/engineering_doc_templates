@@ -127,7 +127,7 @@ These are now settled well enough to start building; adjust retroactively in [En
 - **Acknowledgement language (first draft, pending center-leadership review):** "This form reflects current understanding only. It does not commit [Center Name]'s resources, and the proposed scope may change following further review." Use this consistently on the Intake Form and adapt its wording for the Scope Definition Worksheet's readiness acknowledgement.
 - **Usability target:** the Intake Form should be completable in roughly 15-30 minutes without requiring the requester to gather extensive materials first.
 - **Pilot approach:** use the next real incoming request (not a hypothetical one) as the pilot, reviewed by the center lead plus one engineer from the relevant discipline.
-- **Build tooling:** pdfLaTeX with the `hyperref` package's form-field commands (`\TextField`, `\CheckBox`, `\ChoiceMenu`, etc.) to produce genuine fillable PDF fields from plain `.tex` source, one build command per document, output named `<IntakeReference-or-draft>_<DocumentName>_v<#>.pdf`.
+- **Build tooling:** XeLaTeX (switched from pdfLaTeX to support Times New Roman via `fontspec`) with the `hyperref` package's form-field commands (`\TextField`, `\CheckBox`, `\ChoiceMenu`, etc.) wrapped in a `Form` environment to produce genuine fillable PDF fields from plain `.tex` source, one build command per document, output named `<IntakeReference-or-draft>_<DocumentName>_v<#>.pdf`.
 - **No prefilling in the first release:** forms are reusable blanks only; later prefilling, if pursued, pulls from a previously completed and reviewed PDF of the same project, not an external system.
 
 ## Remaining Organization-Specific Decisions
@@ -143,12 +143,12 @@ These still depend on information only your organization holds, and the template
 
 ## Implementation Sequence
 
-1. **Draft the first form:** finalize the sections above using non-sensitive sample content and placeholders for unconfirmed branding/markings. **(Status: in progress - see repository structure below.)**
-2. **Build the shared foundation and first template:** implement reusable layout/field components, document control, guidance, and continuation sheets using pdfLaTeX + `hyperref` forms.
-3. **Validate the actual PDF:** check field entry, multiline answers, tab order, save/reopen, printing, overflow instructions, marking coverage, and revision consistency in supported viewers.
-4. **Pilot with a requesting department:** verify that the form exposes boundaries, exclusions, missing inputs, and next actions before a project commitment. Revise based on completion effort and discussion quality.
-5. **Prove reuse with the Scope Definition Worksheet:** use the same style/components without copying their implementation; keep document-specific questions separate.
-6. **Expand selectively:** add discipline addenda, acceptance/risk/confirmation documents, and the internal checklist. Evaluate answer extraction/prefilling only after the core workflow is stable.
+1. **Draft the first form:** finalize the sections above using non-sensitive sample content and placeholders for unconfirmed branding/markings. **(Status: done.)**
+2. **Build the shared foundation and first template:** implement reusable layout/field components, document control, guidance, and continuation sheets using XeLaTeX + `hyperref` forms. **(Status: done.)**
+3. **Validate the actual PDF:** check field entry, multiline answers, tab order, save/reopen, printing, overflow instructions, marking coverage, and revision consistency in supported viewers. **(Status: partially done -- field/AcroForm presence verified programmatically; human-viewer checks for tab order, save/reopen, and printing still needed.)**
+4. **Pilot with a requesting department:** verify that the form exposes boundaries, exclusions, missing inputs, and next actions before a project commitment. Revise based on completion effort and discussion quality. **(Status: not started -- needs a real incoming request.)**
+5. **Prove reuse with the Scope Definition Worksheet:** use the same style/components without copying their implementation; keep document-specific questions separate. **(Status: done.)**
+6. **Expand selectively:** add discipline addenda, acceptance/risk/confirmation documents, and the internal checklist. Evaluate answer extraction/prefilling only after the core workflow is stable. **(Status: not started -- Documents 2, 3, 5, 6, and 7 remain.)**
 
 ## Repository Structure
 

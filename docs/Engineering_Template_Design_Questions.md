@@ -179,4 +179,4 @@ Start with explicit module selection and a single supported build method. Avoid 
 
 ## Recommended Next Step
 
-All sections are answered. Proceed to build the first two templates (Pre-Project Intake and Discovery Form, then Scope Definition Worksheet) using the confirmed B1-B12 design rules and the C1-C10 content direction. Update this file retroactively if real-world use surfaces a different standard, retention rule, or pilot outcome than assumed here.
+All sections are answered, and all 7 documents in the family are now built using the confirmed B1-B12 design rules and the C1-C10 content direction -- see [README.md](../README.md) for the current document list and [Engineering_Project_Intake_Plan.md](Engineering_Project_Intake_Plan.md) for implementation status. Update this file retroactively if real-world use (a pilot, a discipline lead's standards review, an actual retention policy) surfaces a different answer than assumed here.

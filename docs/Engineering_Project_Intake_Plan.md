@@ -152,34 +152,17 @@ These still depend on information only your organization holds, and the template
 
 ## Repository Structure
 
-The templates live in a version-controlled folder tree so the shared style/components are edited once and every document picks them up. Planned layout:
+The templates live in a version-controlled folder tree so the shared style/components are edited once and every document picks them up. All 7 documents are now built; see [README.md](../README.md) in the repository root for the authoritative, up-to-date file listing (kept there rather than duplicated here, to avoid the two drifting out of sync). In outline:
 
 ```
 engineering-intake-templates/
-├── README.md                    # What this is, how to build, how to contribute
-├── LICENSE
-├── shared/
-│   ├── intake-style.sty         # Branding, page geometry, headers/footers, markings band
-│   ├── form-components.sty      # Reusable hyperref field macros (text, multiline, checkbox, table rows)
-│   └── logo-placeholder.png     # Swap with the real company logo
-├── documents/
-│   ├── 01-intake-form/
-│   │   └── intake-form.tex      # Document entry point (Document 1)
-│   ├── 02-discipline-addenda/
-│   │   ├── addendum-mechanical.tex
-│   │   ├── addendum-electrical.tex
-│   │   ├── addendum-structural.tex
-│   │   ├── addendum-systems.tex
-│   │   └── addendum-environmental.tex
-│   └── 04-scope-definition/
-│       └── scope-definition.tex # Document entry point (Document 4)
-├── build/                       # Generated PDFs (gitignored, or committed per team preference)
-└── docs/
-    ├── Engineering_Project_Intake_Plan.md
-    └── Engineering_Template_Design_Questions.md
+├── README.md                    # What this is, document purposes, how to build, how to contribute
+├── shared/                      # intake-style.sty and form-components.sty -- edited once, used by every document
+├── documents/                   # One folder per document (01-intake-form through 07-internal-checklist)
+└── docs/                        # This plan and the design-questions file
 ```
 
-Documents 2 (addenda), 3, 5, 6, and 7 are added as their own folders under `documents/` following the same pattern once the first two are piloted. Each document folder stays small and self-contained; all shared look-and-feel lives in `shared/`.
+Each document folder stays small and self-contained; all shared look-and-feel and reusable fillable-field logic lives in `shared/`.
 
 ## Acceptance Checks
 

@@ -1,0 +1,75 @@
+% addendum-structural.tex
+% Document 2 - Technical Discovery Addendum: Structural
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode addendum-structural.tex
+%   xelatex -interaction=nonstopmode addendum-structural.tex   (rerun for TOC/page refs)
+%
+% Issued alongside the Pre-Project Intake and Discovery Form (Document 1)
+% only when structural engineering assistance was indicated. See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Technical Discovery Addendum -- Structural}{ENG-FORM-02S}{v0.1-draft}
+\SetFieldPrefix{addstruct}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This addendum collects the structural-engineering detail that the
+Pre-Project Intake and Discovery Form (Document 1) does not ask for. Fill
+it out only if structural assistance was indicated on that form. Its
+purpose is to give the center's structural engineers enough detail about
+the structure, its condition, and known loading to scope the work
+accurately. It is fine to mark an item Unknown -- the center will help
+fill in technical gaps during discussion.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Structure Description and Condition}
+\TextArea{StructDescribe}{Structure type, age, and general description}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{StructCondition}{Known condition issues (deterioration, prior damage, modifications)}{\linewidth}{1.5cm}
+
+\IntakeSection{Loads}
+\TextArea{LoadsKnown}{Known or estimated dead, live, wind, snow, or seismic loads}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{StructDrawings}{Existing structural drawings or calculations available}{\linewidth}{1.2cm}
+
+\IntakeSection{Site and Geotechnical Considerations}
+\TextArea{GeoKnown}{Known soil/foundation conditions or geotechnical reports}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Standards}
+\Guidance{List any structural codes or standards already known to apply
+(e.g. IBC, ASCE 7). Leave Confirmed By / Status blank if not yet reviewed
+by a discipline lead -- this records applicability, not compliance.}\\[4pt]
+\StandardsTable{StructStd}
+
+\IntakeSection{Site and Access Constraints}
+\TextArea{SiteAccess}{Site access, occupancy, or safety constraints specific to this structure}{\linewidth}{1.5cm}
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{StructOpen}
+
+\AcknowledgementBlock{This addendum supplements the Pre-Project Intake and
+Discovery Form and reflects current understanding only. It does not commit
+\CompanyName's resources and is not authorization to begin engineering
+work or to charge project time.}
+
+\end{Form}
+
+\end{document}

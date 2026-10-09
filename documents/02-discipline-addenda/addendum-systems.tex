@@ -1,0 +1,73 @@
+% addendum-systems.tex
+% Document 2 - Technical Discovery Addendum: Systems
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode addendum-systems.tex
+%   xelatex -interaction=nonstopmode addendum-systems.tex   (rerun for TOC/page refs)
+%
+% Issued alongside the Pre-Project Intake and Discovery Form (Document 1)
+% only when systems engineering / integration assistance was indicated.
+% See docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Technical Discovery Addendum -- Systems}{ENG-FORM-02Y}{v0.1-draft}
+\SetFieldPrefix{addsys}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This addendum collects the systems-engineering detail that the
+Pre-Project Intake and Discovery Form (Document 1) does not ask for. Fill
+it out only if systems or integration assistance was indicated on that
+form. Its purpose is to give the center's systems engineers enough detail
+about how this work fits with other systems, teams, and requirements to
+scope the work accurately. It is fine to mark an item Unknown -- the
+center will help fill in technical gaps during discussion.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Systems and Subsystems Involved}
+\TextArea{SysDescribe}{Systems / subsystems involved and their boundaries}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{SysDocs}{Existing requirements documents, architecture diagrams, or interface control documents available}{\linewidth}{1.5cm}
+
+\IntakeSection{Interfaces}
+\TextArea{SysInterfaces}{Interfaces with other systems (data, mechanical, electrical, human)}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{SysOwners}{Other teams or organizations that own interfacing systems}{\linewidth}{1.2cm}
+
+\IntakeSection{Integration and Test Considerations}
+\TextArea{SysIntegration}{Known integration, verification, or test considerations}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Standards}
+\Guidance{List any systems-engineering standards already known to apply
+(e.g. INCOSE guidance, applicable MIL-STD documents). Leave Confirmed By /
+Status blank if not yet reviewed by a discipline lead -- this records
+applicability, not compliance.}\\[4pt]
+\StandardsTable{SysStd}
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{SysOpen}
+
+\AcknowledgementBlock{This addendum supplements the Pre-Project Intake and
+Discovery Form and reflects current understanding only. It does not commit
+\CompanyName's resources and is not authorization to begin engineering
+work or to charge project time.}
+
+\end{Form}
+
+\end{document}

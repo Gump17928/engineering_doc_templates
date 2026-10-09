@@ -1,0 +1,75 @@
+% addendum-environmental.tex
+% Document 2 - Technical Discovery Addendum: Environmental
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode addendum-environmental.tex
+%   xelatex -interaction=nonstopmode addendum-environmental.tex   (rerun for TOC/page refs)
+%
+% Issued alongside the Pre-Project Intake and Discovery Form (Document 1)
+% only when environmental engineering assistance was indicated. See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Technical Discovery Addendum -- Environmental}{ENG-FORM-02V}{v0.1-draft}
+\SetFieldPrefix{addenv}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This addendum collects the environmental-engineering detail that the
+Pre-Project Intake and Discovery Form (Document 1) does not ask for. Fill
+it out only if environmental assistance was indicated on that form. Its
+purpose is to give the center's environmental engineers enough detail
+about site conditions, regulatory considerations, and materials to scope
+the work accurately. It is fine to mark an item Unknown -- the center will
+help fill in technical gaps during discussion.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Site Conditions}
+\TextArea{SiteConditions}{Site conditions (climate, terrain, surrounding land use)}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{EnvReports}{Existing environmental reports, surveys, or assessments available}{\linewidth}{1.2cm}
+
+\IntakeSection{Regulatory Considerations}
+\TextArea{PermitsKnown}{Known environmental permits, approvals, or regulatory reviews already in place or required}{\linewidth}{1.5cm}
+
+\IntakeSection{Hazardous Materials and Waste}
+\TextArea{HazMaterials}{Known hazardous materials, contamination, or waste-handling considerations}{\linewidth}{1.5cm}
+
+\IntakeSection{Monitoring and Mitigation}
+\TextArea{MonitoringNeeded}{Known environmental monitoring or mitigation requirements}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Standards}
+\Guidance{List any environmental regulations or standards already known to
+apply (e.g. NEPA, applicable EPA regulations). Leave Confirmed By / Status
+blank if not yet reviewed by a discipline lead -- this records
+applicability, not compliance.}\\[4pt]
+\StandardsTable{EnvStd}
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{EnvOpen}
+
+\AcknowledgementBlock{This addendum supplements the Pre-Project Intake and
+Discovery Form and reflects current understanding only. It does not commit
+\CompanyName's resources and is not authorization to begin engineering
+work or to charge project time.}
+
+\end{Form}
+
+\end{document}

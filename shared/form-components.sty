@@ -192,4 +192,84 @@
   \ContinuationNote
 }
 
+% ---------------------------------------------------------------------------
+% \LinkedIntakeBlock
+% One-line reference back to the Intake Form's Intake Reference Number.
+% Used by every document that follows the Intake Form (first used on the
+% Scope Definition Worksheet, reused by every document added after it) so
+% every record in a request's document set can be tied back together.
+% ---------------------------------------------------------------------------
+\newcommand{\LinkedIntakeBlock}{%
+  \IntakeSection{Linked Intake Record}
+  \Guidance{Carry the Intake Reference Number forward unchanged from the
+  Pre-Project Intake and Discovery Form for this request.}\\[4pt]
+  \TextLine{LinkIntakeRef}{Intake Reference No. (from Document 1)}{\linewidth}
+}
+
+% ---------------------------------------------------------------------------
+% \RequirementBlock{fieldPrefix}{displayNumber}
+% One numbered requirement: ID/priority line, requirement text, acceptance
+% criteria, verification method, and owner. Used on the Requirements and
+% Acceptance Worksheet -- richer than a single table row, so it is its own
+% component rather than part of \RiskRegisterTable-style tables.
+% ---------------------------------------------------------------------------
+\newcommand{\RequirementBlock}[2]{%
+  \Guidance{Requirement #2}\\[4pt]
+  \begin{tabularx}{\textwidth}{Y{0.3}Y{0.35}Y{0.35}}
+    \TextLine{#1ID}{Requirement ID}{\linewidth} &
+    \DropDown{#1Priority}{Priority}{\linewidth}{Mandatory,Preferred} &
+    \TextLine{#1Owner}{Source / Owner}{\linewidth} \\
+  \end{tabularx}
+  \vspace{8pt}
+  \TextArea{#1Text}{Requirement}{\linewidth}{1.2cm}\\[8pt]
+  \TextArea{#1Accept}{Acceptance criteria}{\linewidth}{1.2cm}\\[8pt]
+  \TextLine{#1Verify}{Verification method}{\linewidth}
+  \vspace{10pt}
+}
+
+% ---------------------------------------------------------------------------
+% \RiskRegisterTable{prefix}
+% Three-row risk / likelihood / impact / owner / mitigation table. First
+% used on the Constraints, Risks, and Compliance Checklist; reusable
+% wherever else a risk register is needed (e.g. the internal qualification
+% checklist) via a different prefix.
+% ---------------------------------------------------------------------------
+\newcommand{\RiskRegisterTable}[1]{%
+  \begin{tabularx}{\textwidth}{Y{0.34}Y{0.14}Y{0.14}Y{0.16}Y{0.22}}
+    \toprule
+    Risk & Likelihood & Impact & Owner & Mitigation / Notes \\
+    \midrule
+    \TextLine{#1Risk1}{}{\linewidth} & \TextLine{#1Like1}{}{\linewidth} & \TextLine{#1Imp1}{}{\linewidth} &
+      \TextLine{#1Owner1}{}{\linewidth} & \TextLine{#1Mit1}{}{\linewidth} \\[8pt]
+    \TextLine{#1Risk2}{}{\linewidth} & \TextLine{#1Like2}{}{\linewidth} & \TextLine{#1Imp2}{}{\linewidth} &
+      \TextLine{#1Owner2}{}{\linewidth} & \TextLine{#1Mit2}{}{\linewidth} \\[8pt]
+    \TextLine{#1Risk3}{}{\linewidth} & \TextLine{#1Like3}{}{\linewidth} & \TextLine{#1Imp3}{}{\linewidth} &
+      \TextLine{#1Owner3}{}{\linewidth} & \TextLine{#1Mit3}{}{\linewidth} \\
+    \bottomrule
+  \end{tabularx}\\[4pt]
+  \ContinuationNote
+}
+
+% ---------------------------------------------------------------------------
+% \StandardsTable{prefix}
+% Three-row applicable-standard / discipline / confirmed-by / status table.
+% Records applicability and who confirmed it -- it does not itself certify
+% compliance (see the Constraints, Risks, and Compliance Checklist).
+% ---------------------------------------------------------------------------
+\newcommand{\StandardsTable}[1]{%
+  \begin{tabularx}{\textwidth}{Y{0.32}Y{0.2}Y{0.26}Y{0.22}}
+    \toprule
+    Standard / Code & Discipline & Confirmed By & Status \\
+    \midrule
+    \TextLine{#1Std1}{}{\linewidth} & \TextLine{#1Disc1}{}{\linewidth} &
+      \TextLine{#1Conf1}{}{\linewidth} & \TextLine{#1Stat1}{}{\linewidth} \\[8pt]
+    \TextLine{#1Std2}{}{\linewidth} & \TextLine{#1Disc2}{}{\linewidth} &
+      \TextLine{#1Conf2}{}{\linewidth} & \TextLine{#1Stat2}{}{\linewidth} \\[8pt]
+    \TextLine{#1Std3}{}{\linewidth} & \TextLine{#1Disc3}{}{\linewidth} &
+      \TextLine{#1Conf3}{}{\linewidth} & \TextLine{#1Stat3}{}{\linewidth} \\
+    \bottomrule
+  \end{tabularx}\\[4pt]
+  \ContinuationNote
+}
+
 \endinput

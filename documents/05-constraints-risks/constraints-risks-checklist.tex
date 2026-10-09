@@ -1,0 +1,98 @@
+% constraints-risks-checklist.tex
+% Document 5 - Constraints, Risks, and Compliance Checklist
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode constraints-risks-checklist.tex
+%   xelatex -interaction=nonstopmode constraints-risks-checklist.tex   (rerun for TOC/page refs)
+%
+% Completed with the requesting operations/safety/IT representatives and
+% the center lead, typically alongside the Scope Definition Worksheet
+% (Document 4). See docs/Engineering_Project_Intake_Plan.md for the full
+% workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Constraints, Risks, and Compliance Checklist}{ENG-FORM-05}{v0.1-draft}
+\SetFieldPrefix{constrisk}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This checklist records the schedule constraints, applicable codes and
+standards, safety and environmental constraints, data-handling
+restrictions, and known risks that could affect this work. Its purpose is
+to surface these things early, while they are still easy to plan around,
+rather than discovering them after work has started. Recording an
+applicable standard here means it has been identified as relevant -- it
+does not mean the work has been certified as compliant with it. That
+determination is made separately by the appropriate discipline lead or
+compliance authority.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\RequestingOrgBlock
+
+\IntakeSection{Schedule Constraints}
+\TextArea{SchedConstraints}{Known outage windows, access windows, blackout periods, or other scheduling constraints}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Codes and Standards}
+\Guidance{List applicable codes/standards across all disciplines involved.
+This records applicability and who confirmed it, not a compliance
+certification.}\\[4pt]
+\StandardsTable{ComplStd}
+
+\IntakeSection{Safety Constraints}
+\TextArea{SafetyConstraints}{Known safety constraints, required PPE, permits-to-work, or safety reviews}{\linewidth}{1.5cm}
+
+\IntakeSection{Environmental Constraints}
+\TextArea{EnvConstraints}{Known environmental constraints, permits, or site-condition limitations}{\linewidth}{1.5cm}
+
+\IntakeSection{Data and Information-Handling Restrictions}
+\TextArea{DataRestrictions}{Known data classification, export-control, or information-handling restrictions that apply to this work}{\linewidth}{1.5cm}
+
+\IntakeSection{Risk Register}
+\Guidance{List known risks to the schedule, scope, or safety of this
+work, however early-stage.}\\[4pt]
+\RiskRegisterTable{Risk}
+
+\IntakeSection{Specialist Reviews Needed}
+\Guidance{List any reviews by a specialist, safety officer, or other
+authority that this work is known to require.}\\[4pt]
+\begin{tabularx}{\textwidth}{Y{0.3}Y{0.3}Y{0.2}Y{0.2}}
+  \toprule
+  Review Type & Reviewer / Organization & Status & Date \\
+  \midrule
+  \TextLine{Rev1Type}{}{\linewidth} & \TextLine{Rev1Org}{}{\linewidth} & \TextLine{Rev1Status}{}{\linewidth} & \TextLine{Rev1Date}{}{\linewidth} \\[8pt]
+  \TextLine{Rev2Type}{}{\linewidth} & \TextLine{Rev2Org}{}{\linewidth} & \TextLine{Rev2Status}{}{\linewidth} & \TextLine{Rev2Date}{}{\linewidth} \\[8pt]
+  \TextLine{Rev3Type}{}{\linewidth} & \TextLine{Rev3Org}{}{\linewidth} & \TextLine{Rev3Status}{}{\linewidth} & \TextLine{Rev3Date}{}{\linewidth} \\
+  \bottomrule
+\end{tabularx}\\[4pt]
+\ContinuationNote
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{ComplOpen}
+
+\AcknowledgementBlock{This checklist records known constraints, applicable
+standards, and risks at the time of signing. It does not certify
+compliance with any listed standard, does not commit \CompanyName's
+resources, and is not authorization to begin engineering work or to
+charge project time.}
+
+\end{Form}
+
+\end{document}

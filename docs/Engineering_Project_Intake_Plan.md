@@ -26,13 +26,13 @@ Treat completed project documents as confidential by default, subject to the org
 
 | Document | Completed by | Purpose and key contents |
 |---|---|---|
-| **1. Pre-Project Intake and Discovery Form - first release** | Requester, then reviewed with center lead | Capture the business need, requested assistance, preliminary scope boundaries, desired outputs, timing, available inputs, constraints, and unknowns before committing resources. Combines short inquiry and initial discovery to avoid two overlapping forms. |
-| **2. Technical Discovery Addenda - later** | Requesting technical lead and relevant center engineers | Deeper discipline-specific requirements, existing assets/data, interfaces, operating conditions, and site/access needs. Issue only applicable addenda, each usable independently. |
-| **3. Requirements and Acceptance Worksheet - later** | Requesting technical lead and center engineering lead | Numbered requirements, priorities, owners, measurable acceptance criteria, verification methods, and unresolved decisions. |
-| **4. Scope Definition Worksheet - next core document** | Center lead, reviewed by requester/sponsor | Work packages, deliverables, inclusions, exclusions, interface boundaries, requester inputs, assumptions, dependencies, responsibilities, and scope-change handling. Main input to an estimate and SOW. |
-| **5. Constraints, Risks, and Compliance Checklist - later** | Requesting operations/safety/IT representatives and center lead | Outages, permits, standards, environmental and safety constraints, data restrictions, risk owners, and specialist reviews. Records applicability; does not certify compliance. |
-| **6. Pre-SOW Scope Confirmation - later** | Requesting sponsor and center lead | Reviewed scope baseline, open issues, preliminary schedule/resource/funding assumptions, reviewers, and readiness for SOW preparation. Not permission to start engineering work or charge time. |
-| **7. Center Qualification and Handoff Checklist - internal-only** | Center leadership and engineering team | Expertise, capacity, missing information, estimate confidence, funding/charge-code route, risks, and proceed/clarify/decline decision. Do not distribute internal assessments with requester forms. |
+| **1. Pre-Project Intake and Discovery Form - built** | Requester, then reviewed with center lead | Capture the business need, requested assistance, preliminary scope boundaries, desired outputs, timing, available inputs, constraints, and unknowns before committing resources. Combines short inquiry and initial discovery to avoid two overlapping forms. |
+| **2. Technical Discovery Addenda - built (5 discipline-specific files)** | Requesting technical lead and relevant center engineers | Deeper discipline-specific requirements, existing assets/data, interfaces, operating conditions, and site/access needs. Issue only applicable addenda, each usable independently. |
+| **3. Requirements and Acceptance Worksheet - built** | Requesting technical lead and center engineering lead | Numbered requirements, priorities, owners, measurable acceptance criteria, verification methods, and unresolved decisions. |
+| **4. Scope Definition Worksheet - built** | Center lead, reviewed by requester/sponsor | Work packages, deliverables, inclusions, exclusions, interface boundaries, requester inputs, assumptions, dependencies, responsibilities, and scope-change handling. Main input to an estimate and SOW. |
+| **5. Constraints, Risks, and Compliance Checklist - built** | Requesting operations/safety/IT representatives and center lead | Outages, permits, standards, environmental and safety constraints, data restrictions, risk owners, and specialist reviews. Records applicability; does not certify compliance. |
+| **6. Pre-SOW Scope Confirmation - built** | Requesting sponsor and center lead | Reviewed scope baseline, open issues, preliminary schedule/resource/funding assumptions, reviewers, and readiness for SOW preparation. Not permission to start engineering work or charge time. |
+| **7. Center Qualification and Handoff Checklist - built, internal-only** | Center leadership and engineering team | Expertise, capacity, missing information, estimate confidence, funding/charge-code route, risks, and proceed/clarify/decline decision. Do not distribute internal assessments with requester forms. |
 
 ## First Document: Required Content
 
@@ -148,7 +148,7 @@ These still depend on information only your organization holds, and the template
 3. **Validate the actual PDF:** check field entry, multiline answers, tab order, save/reopen, printing, overflow instructions, marking coverage, and revision consistency in supported viewers. **(Status: partially done -- field/AcroForm presence verified programmatically; human-viewer checks for tab order, save/reopen, and printing still needed.)**
 4. **Pilot with a requesting department:** verify that the form exposes boundaries, exclusions, missing inputs, and next actions before a project commitment. Revise based on completion effort and discussion quality. **(Status: not started -- needs a real incoming request.)**
 5. **Prove reuse with the Scope Definition Worksheet:** use the same style/components without copying their implementation; keep document-specific questions separate. **(Status: done.)**
-6. **Expand selectively:** add discipline addenda, acceptance/risk/confirmation documents, and the internal checklist. Evaluate answer extraction/prefilling only after the core workflow is stable. **(Status: not started -- Documents 2, 3, 5, 6, and 7 remain.)**
+6. **Expand selectively:** add discipline addenda, acceptance/risk/confirmation documents, and the internal checklist. Evaluate answer extraction/prefilling only after the core workflow is stable. **(Status: done -- Documents 2, 3, 5, 6, and 7 are all built; see the repository for details.)**
 
 ## Repository Structure
 

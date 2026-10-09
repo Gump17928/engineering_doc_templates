@@ -1,8 +1,10 @@
 # Engineering Project Intake Templates
 
-Reusable LaTeX templates that produce fillable PDF intake and scope-definition
-forms for engineering support requests, before any project charge code or
-Statement of Work (SOW) exists.
+Reusable LaTeX templates that produce fillable PDF forms for the full
+lifecycle of an engineering support request -- from initial intake through
+scope definition, requirements, risk/compliance review, and pre-SOW
+confirmation -- before any project charge code or Statement of Work (SOW)
+exists.
 
 See [docs/Engineering_Project_Intake_Plan.md](docs/Engineering_Project_Intake_Plan.md)
 for the full workflow these documents support, and
@@ -13,16 +15,24 @@ for the design decisions behind the template structure.
 
 | Document | Status | Folder |
 |---|---|---|
-| 1. Pre-Project Intake and Discovery Form | First release | `documents/01-intake-form/` |
-| 2. Technical Discovery Addenda (mechanical, electrical, structural, systems, environmental) | Planned | `documents/02-discipline-addenda/` |
-| 3. Requirements and Acceptance Worksheet | Planned | - |
-| 4. Scope Definition Worksheet | First release | `documents/04-scope-definition/` |
-| 5. Constraints, Risks, and Compliance Checklist | Planned | - |
-| 6. Pre-SOW Scope Confirmation | Planned | - |
-| 7. Center Qualification and Handoff Checklist (internal-only) | Planned | - |
+| 1. Pre-Project Intake and Discovery Form | Built | `documents/01-intake-form/` |
+| 2. Technical Discovery Addenda (mechanical, electrical, structural, systems, environmental) | Built | `documents/02-discipline-addenda/` |
+| 3. Requirements and Acceptance Worksheet | Built | `documents/03-requirements-worksheet/` |
+| 4. Scope Definition Worksheet | Built | `documents/04-scope-definition/` |
+| 5. Constraints, Risks, and Compliance Checklist | Built | `documents/05-constraints-risks/` |
+| 6. Pre-SOW Scope Confirmation | Built | `documents/06-presow-confirmation/` |
+| 7. Center Qualification and Handoff Checklist | Built -- **internal-only, see warning below** | `documents/07-internal-checklist/` |
 
 Each document folder contains its `.tex` source and the current built `.pdf`,
 so anyone can either download the ready-made PDF or rebuild it from source.
+
+> **Document 7 is internal-only.** It is completed by center leadership and
+> engineering staff to decide whether to proceed, clarify, or decline a
+> request. A *blank* copy of this template is included in this repository
+> like any other, but a *completed* copy must never be sent to a requester
+> or included in a requester-facing document package. Its header/footer
+> marking text is intentionally different ("INTERNAL USE ONLY -- DO NOT
+> DISTRIBUTE TO REQUESTER") so a completed copy is unmistakable at a glance.
 
 ## Getting the forms (no LaTeX required)
 
@@ -71,10 +81,22 @@ engineering-intake-templates/
 │   ├── 01-intake-form/
 │   │   ├── intake-form.tex
 │   │   └── intake-form.pdf
-│   ├── 02-discipline-addenda/ # Reserved for future discipline-specific addenda
-│   └── 04-scope-definition/
-│       ├── scope-definition.tex
-│       └── scope-definition.pdf
+│   ├── 02-discipline-addenda/
+│   │   ├── addendum-mechanical.tex / .pdf
+│   │   ├── addendum-electrical.tex / .pdf
+│   │   ├── addendum-structural.tex / .pdf
+│   │   ├── addendum-systems.tex / .pdf
+│   │   └── addendum-environmental.tex / .pdf
+│   ├── 03-requirements-worksheet/
+│   │   └── requirements-worksheet.tex / .pdf
+│   ├── 04-scope-definition/
+│   │   └── scope-definition.tex / .pdf
+│   ├── 05-constraints-risks/
+│   │   └── constraints-risks-checklist.tex / .pdf
+│   ├── 06-presow-confirmation/
+│   │   └── presow-confirmation.tex / .pdf
+│   └── 07-internal-checklist/     # Internal-only -- see warning above
+│       └── qualification-checklist.tex / .pdf
 └── docs/
     ├── Engineering_Project_Intake_Plan.md
     └── Engineering_Template_Design_Questions.md
@@ -110,9 +132,12 @@ adjacent text.
    AcroForm -- without it, the fields render but are not interactive).
 5. Call `\CoverPage` right after `\begin{Form}` to generate the title page
    and table of contents, then reuse `\DocumentControlBlock`,
-   `\RequestingOrgBlock`, `\OpenItemsTable`, and `\AcknowledgementBlock`
-   where they fit. Keep genuinely new questions in the new document's own
-   `.tex` file until the same content is needed a second time.
+   `\RequestingOrgBlock`, `\LinkedIntakeBlock` (reference back to the
+   Intake Form's Intake Reference Number -- use on every document after
+   Document 1), `\OpenItemsTable`, `\RiskRegisterTable`, `\StandardsTable`,
+   `\RequirementBlock`, and `\AcknowledgementBlock` where they fit. Keep
+   genuinely new questions in the new document's own `.tex` file until the
+   same content is needed a second time.
 6. When laying out fillable fields, pass `\linewidth` as the field width
    (inside a `tabularx` cell this is the cell's own width; at the top level
    it is the full `\textwidth`) rather than a hardcoded measurement, so
@@ -125,9 +150,19 @@ adjacent text.
 
 ## Status
 
-First release: the Intake Form and Scope Definition Worksheet are drafted,
-build cleanly under XeLaTeX, and verified to produce real interactive PDF
-form fields (checked programmatically, not just visually). Several fields
-use placeholder text pending organizational confirmation (branding,
-markings, named approvers, retention policy) -- see the "Remaining
+All 7 planned documents (11 files, since Document 2 is 5 separate
+discipline addenda) are drafted, build cleanly under XeLaTeX, and are
+verified to produce real interactive PDF form fields (checked
+programmatically -- field count and `/AcroForm` presence -- not just
+visually). Several fields use placeholder text pending organizational
+confirmation (branding, markings, named approvers, applicable
+codes/standards per discipline, retention policy) -- see the "Remaining
 Organization-Specific Decisions" section of the intake plan.
+
+Still outstanding, per the intake plan's implementation sequence:
+- Human-viewer validation (tab order, save/reopen, printing) in an actual
+  PDF reader -- the automated checks above confirm the fields exist and
+  are wired up, not that they behave well in every viewer.
+- A pilot with a real incoming request.
+- Answer extraction / prefilling between documents (explicitly deferred
+  until after the core workflow is proven out).

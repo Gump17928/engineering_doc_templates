@@ -1,0 +1,77 @@
+% requirements-worksheet.tex
+% Document 3 - Requirements and Acceptance Worksheet
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode requirements-worksheet.tex
+%   xelatex -interaction=nonstopmode requirements-worksheet.tex   (rerun for TOC/page refs)
+%
+% Developed jointly by the requesting technical lead and the center
+% engineering lead, typically alongside or after the Scope Definition
+% Worksheet (Document 4). See docs/Engineering_Project_Intake_Plan.md for
+% the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Requirements and Acceptance Worksheet}{ENG-FORM-03}{v0.1-draft}
+\SetFieldPrefix{reqwksht}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This worksheet writes down the specific, numbered requirements this work
+needs to satisfy, and how the center and the requester will know each one
+has been met. Its purpose is to replace vague expectations with
+requirements that are specific enough to design, build, and check against.
+It is developed jointly by the requesting technical lead and the center
+engineering lead, usually alongside the Scope Definition Worksheet
+(Document 4). Marking a requirement Mandatory versus Preferred helps
+everyone agree on what is truly required versus what is merely desired.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\RequestingOrgBlock
+
+\IntakeSection{How to Use This Worksheet}
+\Guidance{List each distinct, checkable requirement as its own entry below.
+Use Mandatory for requirements that must be met and Preferred for
+requirements that are merely desired. Acceptance criteria should be
+specific enough that two different people would agree whether the
+requirement was met. If a requirement is not yet resolved, say so in the
+Assumptions and Open Questions section rather than guessing.}
+
+\IntakeSection{Requirements Register}
+\RequirementBlock{Req1}{1}
+\RequirementBlock{Req2}{2}
+\RequirementBlock{Req3}{3}
+\RequirementBlock{Req4}{4}
+\RequirementBlock{Req5}{5}
+\ContinuationNote
+
+\IntakeSection{Assumptions and Open Questions}
+\Guidance{Requirements that are not yet resolved, or that depend on a
+decision still pending.}\\[4pt]
+\OpenItemsTable{ReqOpen}
+
+\AcknowledgementBlock{This worksheet reflects the requirements and
+acceptance criteria agreed at the time of signing. It does not commit
+\CompanyName's resources beyond what is already authorized, and it is not
+itself authorization to begin engineering work or to charge project time.}
+
+\end{Form}
+
+\end{document}

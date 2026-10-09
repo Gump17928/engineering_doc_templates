@@ -1,0 +1,76 @@
+% addendum-mechanical.tex
+% Document 2 - Technical Discovery Addendum: Mechanical
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode addendum-mechanical.tex
+%   xelatex -interaction=nonstopmode addendum-mechanical.tex   (rerun for TOC/page refs)
+%
+% Issued alongside the Pre-Project Intake and Discovery Form (Document 1)
+% only when mechanical engineering assistance was indicated. See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Technical Discovery Addendum -- Mechanical}{ENG-FORM-02M}{v0.1-draft}
+\SetFieldPrefix{addmech}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This addendum collects the mechanical-engineering detail that the
+Pre-Project Intake and Discovery Form (Document 1) does not ask for. Fill
+it out only if mechanical assistance was indicated on that form. Its
+purpose is to give the center's mechanical engineers enough detail about
+existing equipment, loads, materials, and constraints to scope the work
+accurately. It is fine to mark an item Unknown -- the center will help
+fill in technical gaps during discussion.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Equipment and Systems Involved}
+\TextArea{EquipDescribe}{Equipment / system description (type, make, model, age if known)}{\linewidth}{2cm}\\[8pt]
+\TextArea{EquipDrawings}{Existing mechanical drawings, models, or manuals available}{\linewidth}{1.5cm}
+
+\IntakeSection{Loads, Motion, and Thermal Considerations}
+\TextArea{LoadsKnown}{Known loads, forces, speeds, or motion requirements}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{ThermalKnown}{Known thermal, pressure, or fluid-flow considerations}{\linewidth}{1.5cm}
+
+\IntakeSection{Materials and Environment}
+\TextArea{MaterialsKnown}{Known or required materials of construction}{\linewidth}{1.2cm}\\[8pt]
+\TextArea{EnvExposure}{Operating environment (temperature, corrosion, vibration, outdoor exposure, etc.)}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Standards}
+\Guidance{List any mechanical codes or standards already known to apply.
+Leave Confirmed By / Status blank if not yet reviewed by a discipline
+lead -- this records applicability, not compliance.}\\[4pt]
+\StandardsTable{MechStd}
+
+\IntakeSection{Site and Access Constraints}
+\TextArea{SiteAccess}{Site access, outage windows, or safety constraints specific to this equipment}{\linewidth}{1.5cm}
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{MechOpen}
+
+\AcknowledgementBlock{This addendum supplements the Pre-Project Intake and
+Discovery Form and reflects current understanding only. It does not commit
+\CompanyName's resources and is not authorization to begin engineering
+work or to charge project time.}
+
+\end{Form}
+
+\end{document}

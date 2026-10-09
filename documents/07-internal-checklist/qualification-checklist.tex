@@ -1,0 +1,80 @@
+% qualification-checklist.tex
+% Document 7 - Center Qualification and Handoff Checklist
+%
+% INTERNAL USE ONLY. This document is completed by center leadership and
+% engineering staff to decide whether to proceed, clarify further, or
+% decline a request. It is never distributed to the requester -- keep it
+% out of any package sent externally.
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode qualification-checklist.tex
+%   xelatex -interaction=nonstopmode qualification-checklist.tex   (rerun for TOC/page refs)
+%
+% See docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Center Qualification and Handoff Checklist}{ENG-FORM-07}{v0.1-draft}
+\SetFieldPrefix{qualchk}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+% The marking text below is intentionally distinct from the requester-
+% facing documents to make internal-only handling unmistakable.
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{INTERNAL USE ONLY -- DO NOT DISTRIBUTE TO REQUESTER}
+
+\SetDocPurpose{%
+INTERNAL DOCUMENT -- DO NOT SEND TO THE REQUESTER. This checklist is for
+center leadership and engineering staff only. Its purpose is to record an
+honest internal assessment of whether the center has the right expertise
+and capacity for a request, how confident the team is in its estimate,
+what is still missing, and what the funding/charge-code route will be,
+before deciding to proceed, clarify further, or decline. Keep this
+document, and anything written on it, separate from the requester-facing
+document package for this request.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Expertise and Capacity Assessment}
+\TextArea{ExpertiseFit}{Does the center have the right disciplines and expertise for this request? Notes.}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{CapacityFit}{Current capacity / availability to take on this request}{\linewidth}{1.5cm}
+
+\IntakeSection{Missing Information}
+\Guidance{Information still needed before the team can commit to a
+confident estimate.}\\[4pt]
+\OpenItemsTable{QualOpen}
+
+\IntakeSection{Estimate Confidence}
+\DropDown{EstConfidence}{Estimate confidence}{\linewidth}{Low,Medium,High}\\[8pt]
+\TextArea{EstNotes}{Notes on estimate confidence (what would increase it)}{\linewidth}{1.5cm}
+
+\IntakeSection{Funding and Charge-Code Route}
+\TextArea{FundingRoute}{Expected funding source and charge-code authorization route}{\linewidth}{1.5cm}
+
+\IntakeSection{Risk Assessment}
+\RiskRegisterTable{QualRisk}
+
+\IntakeSection{Decision}
+\DropDown{Decision}{Decision}{\linewidth}{Proceed,Clarify Further,Decline}\\[8pt]
+\TextArea{DecisionRationale}{Rationale for this decision}{\linewidth}{1.5cm}\\[8pt]
+\begin{tabularx}{\textwidth}{XX}
+  \TextLine{DecisionMaker}{Decision made by}{\linewidth} &
+  \TextLine{DecisionDate}{Date}{\linewidth} \\
+\end{tabularx}
+
+\end{Form}
+
+\end{document}

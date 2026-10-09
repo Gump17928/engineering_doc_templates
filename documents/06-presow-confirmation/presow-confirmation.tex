@@ -1,0 +1,96 @@
+% presow-confirmation.tex
+% Document 6 - Pre-SOW Scope Confirmation
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode presow-confirmation.tex
+%   xelatex -interaction=nonstopmode presow-confirmation.tex   (rerun for TOC/page refs)
+%
+% Completed by the requesting sponsor and the center lead once the Scope
+% Definition Worksheet (and any Requirements or Constraints/Risks
+% documents) have been reviewed. See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Pre-SOW Scope Confirmation}{ENG-FORM-06}{v0.1-draft}
+\SetFieldPrefix{presow}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This document is the final check before a cost/time estimate and a
+Statement of Work (SOW) are prepared. Its purpose is to confirm, in one
+place, that the scope, requirements, and known constraints have been
+reviewed, that remaining open issues are identified rather than hidden,
+and that preliminary schedule and resource assumptions are reasonable.
+Signing this confirmation marks the record as ready to support SOW
+preparation -- it is not itself permission to begin engineering work or to
+charge project time. That still requires the organization's normal
+funding and authorization process.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\RequestingOrgBlock
+
+\IntakeSection{Scope Baseline Summary}
+\TextLine{ScopeDefRev}{Scope Definition Worksheet revision referenced}{\linewidth}\\[8pt]
+\TextArea{ScopeSummary}{Brief restatement of the reviewed scope (inclusions, exclusions, deliverables)}{\linewidth}{2cm}
+
+\IntakeSection{Remaining Open Issues}
+\Guidance{Issues carried forward from earlier documents that are still
+unresolved. An issue being open does not block confirmation, but it must
+be visible here rather than hidden.}\\[4pt]
+\OpenItemsTable{PreSOWOpen}
+
+\IntakeSection{Preliminary Schedule Assumptions}
+\begin{tabularx}{\textwidth}{XX}
+  \TextLine{SchedStart}{Assumed start date}{\linewidth} &
+  \TextLine{SchedDuration}{Estimated duration}{\linewidth} \\
+\end{tabularx}
+\vspace{10pt}
+\TextArea{SchedMilestones}{Key milestones, if known}{\linewidth}{1.2cm}
+
+\IntakeSection{Preliminary Resource and Funding Assumptions}
+\TextArea{ResourceEstimate}{Preliminary labor / resource estimate}{\linewidth}{1.2cm}\\[8pt]
+\begin{tabularx}{\textwidth}{XX}
+  \TextLine{FundingStatus}{Funding status}{\linewidth} &
+  \TextLine{ChargeCodeStatus}{Charge code status}{\linewidth} \\
+\end{tabularx}
+
+\IntakeSection{Reviewer Sign-offs}
+\begin{tabularx}{\textwidth}{Y{0.3}Y{0.25}Y{0.2}Y{0.25}}
+  \toprule
+  Name & Role & Date & Recommendation \\
+  \midrule
+  \TextLine{Rev1Name}{}{\linewidth} & \TextLine{Rev1Role}{}{\linewidth} & \TextLine{Rev1Date}{}{\linewidth} &
+    \DropDown{Rev1Rec}{}{\linewidth}{Ready,Not Ready,Conditional} \\[10pt]
+  \TextLine{Rev2Name}{}{\linewidth} & \TextLine{Rev2Role}{}{\linewidth} & \TextLine{Rev2Date}{}{\linewidth} &
+    \DropDown{Rev2Rec}{}{\linewidth}{Ready,Not Ready,Conditional} \\
+  \bottomrule
+\end{tabularx}
+
+\AcknowledgementBlock{Signing below confirms that the scope, requirements,
+and known constraints for this request have been reviewed and are judged
+ready to support preparation of a cost/time estimate and Statement of Work
+(SOW). It does not commit \CompanyName's resources beyond what is already
+authorized, and it is not itself authorization to begin engineering work
+or to charge project time.}
+
+\end{Form}
+
+\end{document}

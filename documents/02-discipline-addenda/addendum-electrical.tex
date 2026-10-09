@@ -1,0 +1,76 @@
+% addendum-electrical.tex
+% Document 2 - Technical Discovery Addendum: Electrical
+%
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode addendum-electrical.tex
+%   xelatex -interaction=nonstopmode addendum-electrical.tex   (rerun for TOC/page refs)
+%
+% Issued alongside the Pre-Project Intake and Discovery Form (Document 1)
+% only when electrical engineering assistance was indicated. See
+% docs/Engineering_Project_Intake_Plan.md for the full workflow.
+
+\documentclass[11pt]{article}
+
+\usepackage{../../shared/intake-style}
+\usepackage{../../shared/form-components}
+
+\SetDocIdentity{Technical Discovery Addendum -- Electrical}{ENG-FORM-02E}{v0.1-draft}
+\SetFieldPrefix{addelec}
+
+% Replace these placeholders once branding and markings are confirmed
+% (see "Remaining Organization-Specific Decisions" in the intake plan).
+\SetCompanyName{[Engineering Center Name]}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This addendum collects the electrical-engineering detail that the
+Pre-Project Intake and Discovery Form (Document 1) does not ask for. Fill
+it out only if electrical assistance was indicated on that form. Its
+purpose is to give the center's electrical engineers enough detail about
+power, controls, and existing electrical systems to scope the work
+accurately. It is fine to mark an item Unknown -- the center will help
+fill in technical gaps during discussion.%
+}
+
+\begin{document}
+
+\begin{Form}
+
+\CoverPage
+
+\DocumentControlBlock
+
+\LinkedIntakeBlock
+
+\IntakeSection{Power and Load Requirements}
+\TextArea{PowerLevels}{Voltage levels, phase, and load requirements (known or estimated)}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{PowerSource}{Power source and availability (existing service, generator, outage windows)}{\linewidth}{1.5cm}
+
+\IntakeSection{Controls and Instrumentation}
+\TextArea{ControlsDescribe}{Controls, instrumentation, or automation involved}{\linewidth}{1.5cm}\\[8pt]
+\TextArea{ElecDrawings}{Existing one-line diagrams, panel schedules, or electrical drawings available}{\linewidth}{1.2cm}
+
+\IntakeSection{Hazardous Locations and Classifications}
+\TextArea{HazLocation}{Known hazardous-location classifications or explosion-proof requirements}{\linewidth}{1.5cm}
+
+\IntakeSection{Applicable Standards}
+\Guidance{List any electrical codes or standards already known to apply
+(e.g. NEC, NFPA 70E). Leave Confirmed By / Status blank if not yet
+reviewed by a discipline lead -- this records applicability, not
+compliance.}\\[4pt]
+\StandardsTable{ElecStd}
+
+\IntakeSection{Site and Access Constraints}
+\TextArea{SiteAccess}{Site access, outage windows, or lockout/tagout constraints specific to this work}{\linewidth}{1.5cm}
+
+\IntakeSection{Assumptions and Open Questions}
+\OpenItemsTable{ElecOpen}
+
+\AcknowledgementBlock{This addendum supplements the Pre-Project Intake and
+Discovery Form and reflects current understanding only. It does not commit
+\CompanyName's resources and is not authorization to begin engineering
+work or to charge project time.}
+
+\end{Form}
+
+\end{document}

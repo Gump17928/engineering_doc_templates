@@ -7,13 +7,20 @@
 % loaded before this package.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{form-components}[2026/10/09 v0.1 Engineering intake form components]
+\ProvidesPackage{form-components}[2026/10/09 v0.2 Engineering intake form components]
 
 \RequirePackage{hyperref}
 \RequirePackage{array}
 \RequirePackage{booktabs}
 \RequirePackage{longtable}
 \RequirePackage{etoolbox}% provides \ifstrempty, used to skip empty field labels
+\RequirePackage{tabularx}% lets fillable-field tables stretch to fill \textwidth exactly
+
+% Proportional stretch column for tabularx: \newcolumntype{Y}{<factor>} sets
+% a column whose share of the table's stretch width is <factor> times the
+% default X share, so columns can be given unequal widths while the table
+% as a whole still always sums exactly to \textwidth.
+\newcolumntype{Y}[1]{>{\hsize=#1\hsize\linewidth=\hsize\raggedright\arraybackslash}X}
 
 % ---------------------------------------------------------------------------
 % Field-name prefix. Set once per document (e.g. \SetFieldPrefix{intake}) so
@@ -30,7 +37,9 @@
 % \TextLine{name}{label}{width}
 % One-line fillable text field, label placed above the box (omitted if the
 % label is empty), the whole thing wrapped in a parbox of the given width
-% so it never overflows a surrounding table cell.
+% so it never overflows a surrounding table cell. Pass \linewidth as the
+% width to make the field fill all of its available space (full \textwidth
+% at the top level, or the full column width inside a tabularx cell).
 % ---------------------------------------------------------------------------
 \newcommand{\TextLine}[3]{%
   \parbox[t]{#3}{%
@@ -43,7 +52,8 @@
 % ---------------------------------------------------------------------------
 % \TextArea{name}{label}{width}{height}
 % Multi-line fillable text field, label placed above the box (omitted if the
-% label is empty), wrapped in a parbox of the given width.
+% label is empty), wrapped in a parbox of the given width. Pass \linewidth
+% as the width to fill all available space.
 % ---------------------------------------------------------------------------
 \newcommand{\TextArea}[4]{%
   \parbox[t]{#3}{%
@@ -76,8 +86,8 @@
 
 % ---------------------------------------------------------------------------
 % Document control block: shared, recurring identically across every
-% document in the family (per design decision B1/B8).
-% Call once near the top of each document, after \TitleBlock.
+% document in the family (per design decision B1/B8). Call once near the
+% top of each document, after \CoverPage.
 % ---------------------------------------------------------------------------
 \newcommand{\DocumentControlBlock}{%
   \IntakeSection{Document Control}
@@ -85,39 +95,36 @@
   time the record is revised. The Intake Reference Number is independent of
   any project charge code and stays the same across every later document for
   this request.}\\[4pt]
-  \begin{tabular}{@{}p{4.4cm}p{4.4cm}p{4.4cm}@{}}
-    \TextLine{CtrlIntakeRef}{Intake Reference No.}{3.9cm} &
-    \DropDown{CtrlStatus}{Status}{3.9cm}{Draft,Under Review,Confirmed} &
-    \TextLine{CtrlTemplateVer}{Template Version}{3.9cm} \\[10pt]
-    \TextLine{CtrlRevision}{Current Revision}{3.9cm} &
-    \TextLine{CtrlRevDate}{Revision Date}{3.9cm} &
-    \TextLine{CtrlPreparer}{Prepared By}{3.9cm} \\
-  \end{tabular}
+  \begin{tabularx}{\textwidth}{XXX}
+    \TextLine{CtrlIntakeRef}{Intake Reference No.}{\linewidth} &
+    \DropDown{CtrlStatus}{Status}{\linewidth}{Draft,Under Review,Confirmed} &
+    \TextLine{CtrlTemplateVer}{Template Version}{\linewidth} \\[10pt]
+    \TextLine{CtrlRevision}{Current Revision}{\linewidth} &
+    \TextLine{CtrlRevDate}{Revision Date}{\linewidth} &
+    \TextLine{CtrlPreparer}{Prepared By}{\linewidth} \\
+  \end{tabularx}
   \vspace{6pt}
 
   \Guidance{Revision history -- add a row each time the record changes after
   initial completion.}\\[4pt]
-  \begin{tabular}{@{}p{2cm}p{3.5cm}p{2.5cm}p{6cm}@{}}
+  \begin{tabularx}{\textwidth}{Y{0.12}Y{0.24}Y{0.18}Y{0.46}}
     \toprule
-    \textbf{Rev.} & \textbf{Author} & \textbf{Date} & \textbf{Change Summary} \\
+    Rev. & Author & Date & Change Summary \\
     \midrule
-    \TextLine{RevHistRev1}{}{1.6cm} &
-      \TextLine{RevHistAuth1}{}{3.1cm} &
-      \TextLine{RevHistDate1}{}{2.1cm} &
-      \TextField[name=\FormFieldPrefix RevHistSumm1, width=5.8cm, height=0.42cm,
-        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\[8pt]
-    \TextLine{RevHistRev2}{}{1.6cm} &
-      \TextLine{RevHistAuth2}{}{3.1cm} &
-      \TextLine{RevHistDate2}{}{2.1cm} &
-      \TextField[name=\FormFieldPrefix RevHistSumm2, width=5.8cm, height=0.42cm,
-        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\[8pt]
-    \TextLine{RevHistRev3}{}{1.6cm} &
-      \TextLine{RevHistAuth3}{}{3.1cm} &
-      \TextLine{RevHistDate3}{}{2.1cm} &
-      \TextField[name=\FormFieldPrefix RevHistSumm3, width=5.8cm, height=0.42cm,
-        bordercolor={\FieldBorderColor}, backgroundcolor={\FieldBackColor}]{} \\
+    \TextLine{RevHistRev1}{}{\linewidth} &
+      \TextLine{RevHistAuth1}{}{\linewidth} &
+      \TextLine{RevHistDate1}{}{\linewidth} &
+      \TextLine{RevHistSumm1}{}{\linewidth} \\[8pt]
+    \TextLine{RevHistRev2}{}{\linewidth} &
+      \TextLine{RevHistAuth2}{}{\linewidth} &
+      \TextLine{RevHistDate2}{}{\linewidth} &
+      \TextLine{RevHistSumm2}{}{\linewidth} \\[8pt]
+    \TextLine{RevHistRev3}{}{\linewidth} &
+      \TextLine{RevHistAuth3}{}{\linewidth} &
+      \TextLine{RevHistDate3}{}{\linewidth} &
+      \TextLine{RevHistSumm3}{}{\linewidth} \\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
   \vspace{4pt}
   \ContinuationNote
 }
@@ -128,22 +135,24 @@
 % ---------------------------------------------------------------------------
 \newcommand{\RequestingOrgBlock}{%
   \IntakeSection{Requesting Organization and Contacts}
-  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
-    \TextLine{OrgDept}{Requesting Department / Program}{8cm} & \\[10pt]
-    \TextLine{OrgSponsor}{Sponsor}{8cm} &
-    \TextLine{OrgSponsorContact}{Sponsor Email / Phone}{8cm} \\[10pt]
-    \TextLine{OrgTechLead}{Technical Contact}{8cm} &
-    \TextLine{OrgTechContact}{Technical Contact Email / Phone}{8cm} \\
-  \end{tabular}
+  \TextLine{OrgDept}{Requesting Department / Program}{\linewidth}
+  \vspace{10pt}
+
+  \begin{tabularx}{\textwidth}{XX}
+    \TextLine{OrgSponsor}{Sponsor}{\linewidth} &
+    \TextLine{OrgSponsorContact}{Sponsor Email / Phone}{\linewidth} \\[10pt]
+    \TextLine{OrgTechLead}{Technical Contact}{\linewidth} &
+    \TextLine{OrgTechContact}{Technical Contact Email / Phone}{\linewidth} \\
+  \end{tabularx}
   \vspace{4pt}
   \Guidance{List any additional people who can decide requirements or approve
   scope changes.}\\[2pt]
-  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
-    \TextLine{OrgOther1Name}{Additional Contact}{8cm} &
-    \TextLine{OrgOther1Role}{Role}{8cm} \\[10pt]
-    \TextLine{OrgOther2Name}{Additional Contact}{8cm} &
-    \TextLine{OrgOther2Role}{Role}{8cm} \\
-  \end{tabular}
+  \begin{tabularx}{\textwidth}{XX}
+    \TextLine{OrgOther1Name}{Additional Contact}{\linewidth} &
+    \TextLine{OrgOther1Role}{Role}{\linewidth} \\[10pt]
+    \TextLine{OrgOther2Name}{Additional Contact}{\linewidth} &
+    \TextLine{OrgOther2Role}{Role}{\linewidth} \\
+  \end{tabularx}
   \vspace{4pt}
   \ContinuationNote
 }
@@ -155,12 +164,12 @@
 \newcommand{\AcknowledgementBlock}[1]{%
   \IntakeSection{Acknowledgement}
   \Guidance{#1}\\[8pt]
-  \begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
-    \TextLine{AckReqName}{Requester Name}{8cm} &
-    \TextLine{AckReqDate}{Date}{8cm} \\[10pt]
-    \TextLine{AckCenterName}{Center Reviewer Name}{8cm} &
-    \TextLine{AckCenterDate}{Date}{8cm} \\
-  \end{tabular}
+  \begin{tabularx}{\textwidth}{XX}
+    \TextLine{AckReqName}{Requester Name}{\linewidth} &
+    \TextLine{AckReqDate}{Date}{\linewidth} \\[10pt]
+    \TextLine{AckCenterName}{Center Reviewer Name}{\linewidth} &
+    \TextLine{AckCenterDate}{Date}{\linewidth} \\
+  \end{tabularx}
 }
 
 % ---------------------------------------------------------------------------
@@ -171,15 +180,15 @@
 % needs more than one open-items table (e.g. "Open" vs "ScopeOpen").
 % ---------------------------------------------------------------------------
 \newcommand{\OpenItemsTable}[1]{%
-  \begin{tabular}{@{}p{7cm}p{5cm}p{4cm}@{}}
+  \begin{tabularx}{\textwidth}{Y{0.5}Y{0.27}Y{0.23}}
     \toprule
-    \textbf{Open Item} & \textbf{Owner} & \textbf{Target Date} \\
+    Open Item & Owner & Target Date \\
     \midrule
-    \TextLine{#1Item1}{}{6.6cm} & \TextLine{#1Owner1}{}{4.6cm} & \TextLine{#1Date1}{}{3.6cm} \\[8pt]
-    \TextLine{#1Item2}{}{6.6cm} & \TextLine{#1Owner2}{}{4.6cm} & \TextLine{#1Date2}{}{3.6cm} \\[8pt]
-    \TextLine{#1Item3}{}{6.6cm} & \TextLine{#1Owner3}{}{4.6cm} & \TextLine{#1Date3}{}{3.6cm} \\
+    \TextLine{#1Item1}{}{\linewidth} & \TextLine{#1Owner1}{}{\linewidth} & \TextLine{#1Date1}{}{\linewidth} \\[8pt]
+    \TextLine{#1Item2}{}{\linewidth} & \TextLine{#1Owner2}{}{\linewidth} & \TextLine{#1Date2}{}{\linewidth} \\[8pt]
+    \TextLine{#1Item3}{}{\linewidth} & \TextLine{#1Owner3}{}{\linewidth} & \TextLine{#1Date3}{}{\linewidth} \\
     \bottomrule
-  \end{tabular}\\[4pt]
+  \end{tabularx}\\[4pt]
   \ContinuationNote
 }
 

@@ -1,8 +1,9 @@
 % scope-definition.tex
 % Document 4 - Scope Definition Worksheet
 %
-% Build (from this folder):
-%   pdflatex -interaction=nonstopmode scope-definition.tex
+% Build (from this folder, requires XeLaTeX -- see README.md):
+%   xelatex -interaction=nonstopmode scope-definition.tex
+%   xelatex -interaction=nonstopmode scope-definition.tex   (rerun for TOC/page refs)
 %
 % Developed by the center lead after the Pre-Project Intake and Discovery
 % Form (Document 1) and any needed discovery addenda. This worksheet is the
@@ -20,63 +21,79 @@
 % Replace these placeholders once branding and markings are confirmed
 % (see "Remaining Organization-Specific Decisions" in the intake plan).
 \SetCompanyName{[Engineering Center Name]}
-\SetMarkingText{FOR OFFICIAL USE ONLY -- CONTENTS CONFIDENTIAL}
+\SetMarkingText{FOR OFFICIAL USE ONLY}
+
+\SetDocPurpose{%
+This worksheet turns an accepted intake request into a clearly bounded
+piece of work. Its purpose is to write down, in plain language, exactly
+what the engineering center will and will not do, what the requester needs
+to provide, what will be delivered, and who accepts the results. It is
+developed jointly by the center lead and the requester after the Intake
+Form (Document 1) has been reviewed. Once this record reaches Confirmed
+status, it becomes the primary reference for preparing a cost/time
+estimate and an eventual Statement of Work (SOW). Reaching Confirmed
+status is not itself permission to start engineering work or to charge
+project time -- that still requires the organization's normal funding and
+authorization process.%
+}
 
 \begin{document}
 
-\TitleBlock
+\begin{Form}
+
+\CoverPage
 
 \DocumentControlBlock
 
 \IntakeSection{Linked Intake Record}
 \Guidance{Carry the Intake Reference Number forward unchanged from the
 Pre-Project Intake and Discovery Form for this request.}\\[4pt]
-\TextLine{LinkIntakeRef}{Intake Reference No. (from Document 1)}{8cm}
+\TextLine{LinkIntakeRef}{Intake Reference No. (from Document 1)}{\linewidth}
 
 \RequestingOrgBlock
 
 \IntakeSection{Work Packages and Deliverables}
 \Guidance{List each distinct piece of work as its own row. Keep deliverable
 formats specific (e.g. "PDF report," "CAD model," "calculation package").}\\[4pt]
-\begin{tabular}{@{}p{5.5cm}p{5.5cm}p{5.5cm}@{}}
+\begin{tabularx}{\textwidth}{XXX}
   \toprule
-  \textbf{Work Package} & \textbf{Deliverable(s)} & \textbf{Acceptance Owner} \\
+  Work Package & Deliverable(s) & Acceptance Owner \\
   \midrule
-  \TextLine{WP1Name}{}{5.1cm} & \TextLine{WP1Deliv}{}{5.1cm} & \TextLine{WP1Owner}{}{5.1cm} \\[10pt]
-  \TextLine{WP2Name}{}{5.1cm} & \TextLine{WP2Deliv}{}{5.1cm} & \TextLine{WP2Owner}{}{5.1cm} \\[10pt]
-  \TextLine{WP3Name}{}{5.1cm} & \TextLine{WP3Deliv}{}{5.1cm} & \TextLine{WP3Owner}{}{5.1cm} \\[10pt]
-  \TextLine{WP4Name}{}{5.1cm} & \TextLine{WP4Deliv}{}{5.1cm} & \TextLine{WP4Owner}{}{5.1cm} \\[10pt]
-  \TextLine{WP5Name}{}{5.1cm} & \TextLine{WP5Deliv}{}{5.1cm} & \TextLine{WP5Owner}{}{5.1cm} \\
+  \TextLine{WP1Name}{}{\linewidth} & \TextLine{WP1Deliv}{}{\linewidth} & \TextLine{WP1Owner}{}{\linewidth} \\[10pt]
+  \TextLine{WP2Name}{}{\linewidth} & \TextLine{WP2Deliv}{}{\linewidth} & \TextLine{WP2Owner}{}{\linewidth} \\[10pt]
+  \TextLine{WP3Name}{}{\linewidth} & \TextLine{WP3Deliv}{}{\linewidth} & \TextLine{WP3Owner}{}{\linewidth} \\[10pt]
+  \TextLine{WP4Name}{}{\linewidth} & \TextLine{WP4Deliv}{}{\linewidth} & \TextLine{WP4Owner}{}{\linewidth} \\[10pt]
+  \TextLine{WP5Name}{}{\linewidth} & \TextLine{WP5Deliv}{}{\linewidth} & \TextLine{WP5Owner}{}{\linewidth} \\
   \bottomrule
-\end{tabular}\\[4pt]
+\end{tabularx}\\[4pt]
 \ContinuationNote
 
 \IntakeSection{Inclusions and Exclusions}
-\TextArea{ScopeIncluded}{Work explicitly included}{16.5cm}{2cm}\\[8pt]
-\TextArea{ScopeExcluded}{Work explicitly excluded}{16.5cm}{2cm}\\[8pt]
+\TextArea{ScopeIncluded}{Work explicitly included}{\linewidth}{2cm}\\[8pt]
+\TextArea{ScopeExcluded}{Work explicitly excluded}{\linewidth}{2cm}\\[8pt]
 \Guidance{Exclusions matter as much as inclusions -- an unstated exclusion is
 a common source of later scope disputes.}
 
 \IntakeSection{Interface Boundaries and Responsibilities}
-\TextArea{IfaceBoundaries}{Boundaries between this work and other teams / systems}{16.5cm}{2cm}\\[8pt]
-\begin{tabular}{@{}p{8.5cm}p{8.5cm}@{}}
-  \TextLine{RespCenter}{Center is responsible for}{8cm} &
-  \TextLine{RespRequester}{Requester is responsible for}{8cm} \\
-\end{tabular}
+\TextArea{IfaceBoundaries}{Boundaries between this work and other teams / systems}{\linewidth}{2cm}\\[8pt]
+\begin{tabularx}{\textwidth}{XX}
+  \TextLine{RespCenter}{Center is responsible for}{\linewidth} &
+  \TextLine{RespRequester}{Requester is responsible for}{\linewidth} \\
+\end{tabularx}
 
 \IntakeSection{Requester-Provided Inputs and Dependencies}
 \Guidance{List what the center needs from the requester before or during the
 work, and by when. Unmet dependencies are a common cause of schedule
 slippage.}\\[4pt]
-\begin{tabular}{@{}p{6cm}p{5.5cm}p{4.5cm}@{}}
+\begin{tabularx}{\textwidth}{Y{0.45}Y{0.3}Y{0.25}}
   \toprule
-  \textbf{Needed Input / Dependency} & \textbf{Provided By} & \textbf{Needed By} \\
+  Needed Input / Dependency & Provided By & Needed By \\
   \midrule
-  \TextLine{Dep1Item}{}{5.6cm} & \TextLine{Dep1Owner}{}{5.1cm} & \TextLine{Dep1Date}{}{4.1cm} \\[10pt]
-  \TextLine{Dep2Item}{}{5.6cm} & \TextLine{Dep2Owner}{}{5.1cm} & \TextLine{Dep2Date}{}{4.1cm} \\[10pt]
-  \TextLine{Dep3Item}{}{5.6cm} & \TextLine{Dep3Owner}{}{5.1cm} & \TextLine{Dep3Date}{}{4.1cm} \\
+  \TextLine{Dep1Item}{}{\linewidth} & \TextLine{Dep1Owner}{}{\linewidth} & \TextLine{Dep1Date}{}{\linewidth} \\[10pt]
+  \TextLine{Dep2Item}{}{\linewidth} & \TextLine{Dep2Owner}{}{\linewidth} & \TextLine{Dep2Date}{}{\linewidth} \\[10pt]
+  \TextLine{Dep3Item}{}{\linewidth} & \TextLine{Dep3Owner}{}{\linewidth} & \TextLine{Dep3Date}{}{\linewidth} \\
   \bottomrule
-\end{tabular}\\[4pt]
+\end{tabularx}\\[4pt]
 \ContinuationNote
 
 \IntakeSection{Assumptions and Open Items}
@@ -90,12 +107,14 @@ recorded resolution.}\\[4pt]
 proposed change to this worksheet, not an automatic scope addition. After
 Confirmed status / SOW authorization, use the organization's formal
 change-control process instead of this worksheet.}\\[4pt]
-\TextArea{ChangeNotes}{Notes on scope changes since the prior revision, if any}{16.5cm}{1.5cm}
+\TextArea{ChangeNotes}{Notes on scope changes since the prior revision, if any}{\linewidth}{1.5cm}
 
 \AcknowledgementBlock{This worksheet reflects the scope boundaries agreed
 during discovery and review. Moving this record to Confirmed status
 indicates it is ready to support an estimate and Statement of Work (SOW),
 but is not itself authorization to begin engineering work or to charge
 project time.}
+
+\end{Form}
 
 \end{document}
